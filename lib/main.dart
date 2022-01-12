@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                   FadeAnimation(
                       1,
                       Text(
-                        "Login",
+                        "PENKAR",
                         style: TextStyle(color: Colors.white, fontSize: 40),
                       )),
                   SizedBox(
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                   FadeAnimation(
                       1.3,
                       Text(
-                        "Welcome Back",
+                        "Login",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       )),
                 ],
