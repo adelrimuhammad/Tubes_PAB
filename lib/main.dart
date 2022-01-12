@@ -14,9 +14,8 @@ class HomePage extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          Colors.orange[900],
-          Colors.orange[800],
-          Colors.orange[400]
+          Colors.blueGrey[800],
+          Colors.blueGrey[900],
         ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +126,7 @@ class HomePage extends StatelessWidget {
                               margin: EdgeInsets.symmetric(horizontal: 50),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Colors.orange[900]),
+                                  color: Colors.greenAccent[700]),
                               child: Center(
                                 child: Text(
                                   "Login",
@@ -140,58 +139,7 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 50,
                         ),
-                        FadeAnimation(
-                            1.7,
-                            Text(
-                              "Continue with social media",
-                              style: TextStyle(color: Colors.grey),
-                            )),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: FadeAnimation(
-                                  1.8,
-                                  Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.blue),
-                                    child: Center(
-                                      child: Text(
-                                        "Facebook",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Expanded(
-                              child: FadeAnimation(
-                                  1.9,
-                                  Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.black),
-                                    child: Center(
-                                      child: Text(
-                                        "Github",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )),
-                            )
-                          ],
-                        )
+                        Row()
                       ],
                     ),
                   ),
