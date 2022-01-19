@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:penkar/pages/list_data_page.dart';
+import 'package:penkar/pages/tambah_karyawan_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       home: ListDataPage(),
       routes: {
         '/home': (context) => ListDataPage(),
+        '/tambah': (context) => TambahKaryawanPage(),
       },
     );
   }
