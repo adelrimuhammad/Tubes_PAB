@@ -1,6 +1,6 @@
 {
-    "name": "aris_login",
-    "short_name": "aris_login",
+    "name": "penkar",
+    "short_name": "penkar",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
