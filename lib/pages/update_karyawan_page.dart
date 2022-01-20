@@ -152,15 +152,6 @@ class _UpdateKaryawanPageState extends State<UpdateKaryawanPage> {
               SizedBox(
                 height: 12,
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Gaji',
-                  contentPadding: EdgeInsets.all(12),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
               SizedBox(
                 height: 34,
               ),

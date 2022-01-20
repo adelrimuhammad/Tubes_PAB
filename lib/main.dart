@@ -3,6 +3,7 @@ import 'package:penkar/pages/detail_karyawan_page.dart';
 import 'package:penkar/pages/list_data_page.dart';
 import 'package:penkar/pages/tambah_karyawan_page.dart';
 import 'package:penkar/pages/update_karyawan_page.dart';
+import 'package:penkar/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.indigo,
         accentColor: Color(0xff849974),
       ),
-      home: ListDataPage(),
+      home: LoginPage(),
       routes: {
         '/home': (context) => ListDataPage(),
         '/detail': (context) => DetailKaryawanPage(),
