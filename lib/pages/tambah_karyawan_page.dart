@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:penkar/models/karyawan_model.dart';
+import 'package:penkar/provider/karyawan_provider.dart';
 import 'package:penkar/themes.dart';
+import 'package:provider/provider.dart';
 
 class TambahKaryawanPage extends StatefulWidget {
   @override
@@ -12,8 +15,30 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
   List _gender = ['Pria', 'Wanita'];
   List _status = ['Lajang', 'Menikah'];
 
+  bool isUploaded = false;
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController jabatanController = TextEditingController(text: '');
+  TextEditingController nikController = TextEditingController(text: '');
+  TextEditingController tgl_lahirController = TextEditingController(text: '');
+  TextEditingController no_telpController = TextEditingController(text: '');
+  TextEditingController statusController = TextEditingController(text: '');
+  TextEditingController tahun_bergabungController =
+      TextEditingController(text: '');
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
+    void showError(String message) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(message),
+        ),
+      );
+    }
+
+    var karyawanProvider = Provider.of<KaryawanProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -30,6 +55,7 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
                 height: 24,
               ),
               TextFormField(
+                controller: nameController,
                 decoration: InputDecoration(
                   hintText: 'Nama',
                   contentPadding: EdgeInsets.all(12),
@@ -41,6 +67,7 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
                 height: 12,
               ),
               TextFormField(
+                controller: jabatanController,
                 decoration: InputDecoration(
                   hintText: 'Jabatan',
                   contentPadding: EdgeInsets.all(12),
@@ -52,6 +79,7 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
                 height: 12,
               ),
               TextFormField(
+                controller: nikController,
                 decoration: InputDecoration(
                     hintText: 'NIK',
                     contentPadding: EdgeInsets.all(12),
@@ -61,30 +89,11 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
               SizedBox(
                 height: 12,
               ),
-              DropdownButtonFormField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(12),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                ),
-                hint: Text("Jenis kelamin"),
-                value: _valGender,
-                items: _gender.map((value) {
-                  return DropdownMenuItem(
-                    child: Text(value),
-                    value: value,
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() {
-                    _valGender = value.toString();
-                  });
-                },
-              ),
               SizedBox(
                 height: 12,
               ),
               TextFormField(
+                controller: tgl_lahirController,
                 decoration: InputDecoration(
                   hintText: 'Tanggal lahir',
                   contentPadding: EdgeInsets.all(12),
@@ -96,6 +105,7 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
                 height: 12,
               ),
               TextFormField(
+                controller: no_telpController,
                 decoration: InputDecoration(
                   hintText: 'Nomor telepon',
                   contentPadding: EdgeInsets.all(12),
@@ -106,30 +116,20 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
               SizedBox(
                 height: 12,
               ),
-              DropdownButtonFormField(
+              TextFormField(
+                controller: statusController,
                 decoration: InputDecoration(
+                  hintText: 'Status',
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15)),
                 ),
-                hint: Text("Status"),
-                value: _valStatus,
-                items: _status.map((value) {
-                  return DropdownMenuItem(
-                    child: Text(value),
-                    value: value,
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() {
-                    _valStatus = value.toString();
-                  });
-                },
               ),
               SizedBox(
                 height: 12,
               ),
               TextFormField(
+                controller: tahun_bergabungController,
                 decoration: InputDecoration(
                   hintText: 'Tahun bergabung',
                   contentPadding: EdgeInsets.all(12),
@@ -154,7 +154,42 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
                       color: Color(0xff849974),
                     ),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (nameController.text.isEmpty ||
+                            jabatanController.text.isEmpty ||
+                            nikController.text.isEmpty ||
+                            tgl_lahirController.text.isEmpty ||
+                            no_telpController.text.isEmpty ||
+                            statusController.text.isEmpty ||
+                            tahun_bergabungController.text.isEmpty) {
+                          showError('semua field harus diisi');
+                        } else {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          KaryawanModel? karyawan =
+                              await KaryawanProvider.tambah(
+                                  nameController.text,
+                                  jabatanController.text,
+                                  nikController.text,
+                                  tgl_lahirController.text,
+                                  no_telpController.text,
+                                  statusController.text,
+                                  tahun_bergabungController.text);
+
+                          setState(() {
+                            isLoading = false;
+                          });
+
+                          if (karyawan == null) {
+                            showError('email sudah terdaftar');
+                          } else {
+                            karyawanProvider.karyawan = karyawan;
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/home', (route) => false);
+                          }
+                        }
+                      },
                       child: Text(
                         'Submit',
                         style: editBtnTextStyle,

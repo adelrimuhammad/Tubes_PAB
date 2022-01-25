@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:penkar/models/karyawan_model.dart';
 import 'package:penkar/themes.dart';
+import 'package:sizer/sizer.dart';
 
 class CardKaryawan extends StatelessWidget {
   final KaryawanModel karyawan;
@@ -26,16 +27,22 @@ class CardKaryawan extends StatelessWidget {
             height: 35,
             child: Row(
               children: [
-                Text(
-                  karyawan.name.toString(),
-                  style: tableCardTextStyle,
+                Container(
+                  width: 30.w,
+                  child: Text(
+                    karyawan.name.toString(),
+                    style: tableCardTextStyle,
+                  ),
                 ),
                 SizedBox(
-                  width: 50,
+                  width: 110,
                 ),
-                Text(
-                  karyawan.jabatan.toString(),
-                  style: tableCardTextStyle,
+                Container(
+                  width: 30.w,
+                  child: Text(
+                    karyawan.jabatan.toString(),
+                    style: tableCardTextStyle,
+                  ),
                 ),
               ],
             ),

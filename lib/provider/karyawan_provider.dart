@@ -5,6 +5,15 @@ import 'package:http/http.dart' as http;
 import 'package:penkar/models/karyawan_model.dart';
 
 class KaryawanProvider with ChangeNotifier {
+  late KaryawanModel _karyawan;
+
+  KaryawanModel get karyawan => _karyawan;
+
+  set karyawan(KaryawanModel newKaryawan) {
+    _karyawan = newKaryawan;
+    notifyListeners();
+  }
+
   Future<List<KaryawanModel>> getKaryawans() async {
     try {
       var response = await http.get(
@@ -27,6 +36,44 @@ class KaryawanProvider with ChangeNotifier {
     } catch (e) {
       print(e);
       return [];
+    }
+  }
+
+  Future<KaryawanModel?> tambah(
+      String name,
+      String jabatan,
+      String nik,
+      String tgl_lahir,
+      String no_telp,
+      String status,
+      String tahun_bergabung) async {
+    try {
+      var body = {
+        'name': name,
+        'jabatan': jabatan,
+        'nik': nik,
+        'tgl_lahir': tgl_lahir,
+        'no_telp': no_telp,
+        'status': status,
+        'tahun_bergabung': tahun_bergabung,
+      };
+
+      var response = await http.post(
+        Uri.parse('https://tubes-penkar.herokuapp.com/api/employee'),
+        body: body,
+      );
+
+      print(response.statusCode);
+      print(response.body);
+
+      if (response.statusCode == 200) {
+        return KaryawanModel.fromJson(jsonDecode(response.body));
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
+      return null;
     }
   }
 }
