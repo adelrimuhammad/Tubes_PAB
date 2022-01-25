@@ -4,7 +4,7 @@ class KaryawanModel {
   String? jabatan;
   String? nik;
   String? tgl_lahir;
-  String? no_telp;
+  String? no_tlp;
   String? status;
   int? tahun_bergabung;
 
@@ -14,7 +14,7 @@ class KaryawanModel {
     this.jabatan,
     this.nik,
     this.tgl_lahir,
-    this.no_telp,
+    this.no_tlp,
     this.status,
     this.tahun_bergabung,
   });
@@ -25,7 +25,7 @@ class KaryawanModel {
     jabatan = json['jabatan'];
     nik = json['nik'];
     tgl_lahir = json['tgl_lahir'];
-    no_telp = json['no_telp'];
+    no_tlp = json['no_tlp'];
     status = json['status'];
     tahun_bergabung = json['tahun_bergabung'];
   }
@@ -37,7 +37,7 @@ class KaryawanModel {
       'jabatan': jabatan,
       'nik': nik,
       'tgl_lahir': tgl_lahir,
-      'no_telp': no_telp,
+      'no_tlp': no_tlp,
       'status': status,
       'tahun_bergabung': tahun_bergabung,
     };

@@ -37,6 +37,15 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
       );
     }
 
+    void showSuccess(String message) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(message),
+        ),
+      );
+    }
+
     var karyawanProvider = Provider.of<KaryawanProvider>(context);
 
     return Scaffold(
@@ -182,7 +191,9 @@ class _TambahKaryawanPageState extends State<TambahKaryawanPage> {
                           });
 
                           if (karyawan == null) {
-                            showError('email sudah terdaftar');
+                            showSuccess('karyawan sudah terdaftar');
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/home', (route) => false);
                           } else {
                             karyawanProvider.karyawan = karyawan;
                             Navigator.pushNamedAndRemoveUntil(

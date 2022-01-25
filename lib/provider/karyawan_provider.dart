@@ -39,12 +39,12 @@ class KaryawanProvider with ChangeNotifier {
     }
   }
 
-  Future<KaryawanModel?> tambah(
+  static Future<KaryawanModel?> tambah(
       String name,
       String jabatan,
       String nik,
       String tgl_lahir,
-      String no_telp,
+      String no_tlp,
       String status,
       String tahun_bergabung) async {
     try {
@@ -53,7 +53,7 @@ class KaryawanProvider with ChangeNotifier {
         'jabatan': jabatan,
         'nik': nik,
         'tgl_lahir': tgl_lahir,
-        'no_telp': no_telp,
+        'no_tlp': no_tlp,
         'status': status,
         'tahun_bergabung': tahun_bergabung,
       };
