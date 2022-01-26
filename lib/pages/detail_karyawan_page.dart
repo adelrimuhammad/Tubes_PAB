@@ -134,7 +134,12 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                       border: Border.all(color: Colors.red, width: 2),
                     ),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        KaryawanModel? karyawan = await KaryawanProvider.delete(
+                            widget.karyawan.id.toString());
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/home', (route) => false);
+                      },
                       child: Text(
                         'Hapus',
                         style: deleteBtnTextStyle,

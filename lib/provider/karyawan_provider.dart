@@ -141,4 +141,9 @@ class KaryawanProvider with ChangeNotifier {
       return null;
     }
   }
+
+  static Future<KaryawanModel?> delete(String id) async {
+    var response = await http.delete(
+        Uri.parse('https://tubes-penkar.herokuapp.com/api/employee/$id'));
+  }
 }
