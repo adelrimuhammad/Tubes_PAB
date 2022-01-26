@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:penkar/models/karyawan_model.dart';
+import 'package:penkar/provider/karyawan_provider.dart';
 import 'package:penkar/themes.dart';
+import 'package:provider/provider.dart';
 
-class DetailKaryawanPage extends StatelessWidget {
-  const DetailKaryawanPage({Key? key}) : super(key: key);
+class DetailKaryawanPage extends StatefulWidget {
+  late final KaryawanModel karyawan;
 
   @override
+  State<DetailKaryawanPage> createState() => _DetailKaryawanPageState();
+}
+
+class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
+  @override
   Widget build(BuildContext context) {
+    var karyawanProvider = Provider.of<KaryawanProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -23,7 +32,7 @@ class DetailKaryawanPage extends StatelessWidget {
               ),
               TextField(
                 decoration: InputDecoration(
-                  hintText: 'Nama',
+                  hintText: '',
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),

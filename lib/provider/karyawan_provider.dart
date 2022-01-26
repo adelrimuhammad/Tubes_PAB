@@ -76,4 +76,30 @@ class KaryawanProvider with ChangeNotifier {
       return null;
     }
   }
+
+  Future<List<KaryawanModel>> getKaryawanbyId(String id) async {
+    try {
+      var response = await http.get(
+          Uri.parse('https://tubes-penkar.herokuapp.com/api/employee/$id'));
+
+      print(response.statusCode);
+      print(response.body);
+
+      if (response.statusCode == 200) {
+        List<KaryawanModel> karyawans = [];
+        List parsedJson = jsonDecode(response.body);
+
+        parsedJson.forEach((karyawan) {
+          karyawans.add(KaryawanModel.fromJson(karyawan));
+        });
+
+        return karyawans;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      print(e);
+      return [];
+    }
+  }
 }
