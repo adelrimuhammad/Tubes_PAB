@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:penkar/models/karyawan_model.dart';
+import 'package:penkar/pages/update_karyawan_page.dart';
 import 'package:penkar/provider/karyawan_provider.dart';
 import 'package:penkar/themes.dart';
 import 'package:provider/provider.dart';
@@ -152,7 +153,11 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                     ),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/update');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    UpdateKaryawanPage(widget.karyawan)));
                       },
                       child: Text(
                         'Edit',

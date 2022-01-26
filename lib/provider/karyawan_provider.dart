@@ -102,4 +102,43 @@ class KaryawanProvider with ChangeNotifier {
       return [];
     }
   }
+
+  static Future<KaryawanModel?> update(
+      String id,
+      String name,
+      String jabatan,
+      String nik,
+      String tgl_lahir,
+      String no_tlp,
+      String status,
+      String tahun_bergabung) async {
+    try {
+      var body = {
+        'name': name,
+        'jabatan': jabatan,
+        'nik': nik,
+        'tgl_lahir': tgl_lahir,
+        'no_tlp': no_tlp,
+        'status': status,
+        'tahun_bergabung': tahun_bergabung,
+      };
+
+      var response = await http.post(
+        Uri.parse('https://tubes-penkar.herokuapp.com/api/employee/$id'),
+        body: body,
+      );
+
+      print(response.statusCode);
+      print(response.body);
+
+      if (response.statusCode == 200) {
+        return KaryawanModel.fromJson(jsonDecode(response.body));
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
 }

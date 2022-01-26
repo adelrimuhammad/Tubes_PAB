@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
         routes: {
           '/home': (context) => ListDataPage(),
           '/tambah': (context) => TambahKaryawanPage(),
-          '/update': (context) => UpdateKaryawanPage(),
         },
       ),
     );
