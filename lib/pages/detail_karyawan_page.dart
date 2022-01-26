@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 class DetailKaryawanPage extends StatefulWidget {
   late final KaryawanModel karyawan;
+  DetailKaryawanPage(this.karyawan);
 
   @override
   State<DetailKaryawanPage> createState() => _DetailKaryawanPageState();
@@ -31,8 +32,9 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                 height: 24,
               ),
               TextField(
+                enabled: false,
                 decoration: InputDecoration(
-                  hintText: '',
+                  hintText: widget.karyawan.name,
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -43,8 +45,9 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                 height: 12,
               ),
               TextField(
+                enabled: false,
                 decoration: InputDecoration(
-                  hintText: 'Jabatan',
+                  hintText: widget.karyawan.jabatan,
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -55,8 +58,9 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                 height: 12,
               ),
               TextField(
+                enabled: false,
                 decoration: InputDecoration(
-                  hintText: 'NIK',
+                  hintText: widget.karyawan.nik,
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -67,8 +71,9 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                 height: 12,
               ),
               TextField(
+                enabled: false,
                 decoration: InputDecoration(
-                  hintText: '',
+                  hintText: widget.karyawan.tgl_lahir,
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -79,7 +84,9 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                 height: 12,
               ),
               TextField(
+                enabled: false,
                 decoration: InputDecoration(
+                  hintText: widget.karyawan.no_tlp,
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -90,7 +97,9 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                 height: 12,
               ),
               TextField(
+                enabled: false,
                 decoration: InputDecoration(
+                  hintText: widget.karyawan.status,
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -101,7 +110,9 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
                 height: 12,
               ),
               TextField(
+                enabled: false,
                 decoration: InputDecoration(
+                  hintText: widget.karyawan.tahun_bergabung.toString(),
                   contentPadding: EdgeInsets.all(12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -110,28 +121,6 @@ class _DetailKaryawanPageState extends State<DetailKaryawanPage> {
               ),
               SizedBox(
                 height: 12,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(12),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(12),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 34,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

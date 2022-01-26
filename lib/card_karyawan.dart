@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:penkar/models/karyawan_model.dart';
+import 'package:penkar/pages/detail_karyawan_page.dart';
 import 'package:penkar/themes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,7 +15,11 @@ class CardKaryawan extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, '/detail');
+            // '/detail': (context) => DetailKaryawanPage(karyawan),
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailKaryawanPage(karyawan)));
           },
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 8),
